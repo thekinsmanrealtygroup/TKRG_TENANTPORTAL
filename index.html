@@ -749,7 +749,7 @@
   function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const userMessage = input.value.trim();
-    if  return;
+    if (userMessage === '') return;
     addChatMessage(userMessage, 'user');
     input.value = '';
     setTimeout(() => {
@@ -775,4 +775,4 @@
   document.getElementById("accessCode").addEventListener("keypress", (e) => { if (e.key === "Enter") login(document.getElementById("accessCode").value.trim()); });
 </script>
 </body>
-    </html>
+</html>
