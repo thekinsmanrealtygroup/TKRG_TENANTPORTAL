@@ -27,6 +27,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .logo { font-size: 1.5rem; font-weight: 700; color: white; }
     .logo span { color: #c9a03d; }
@@ -144,65 +146,159 @@
     .tour-datetime { display: flex; gap: 0.8rem; margin: 0.8rem 0; }
     .tour-datetime input { flex: 1; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; }
     .tour-status { font-size: 0.8rem; margin-top: 0.5rem; padding: 0.4rem; border-radius: 8px; background: #e2e8f0; }
+    
+    /* Current Step Card */
     .current-step-card {
       background: #fffcf0;
       border-radius: 0.75rem;
-      padding: 1.5rem;
+      padding: 1.2rem;
       border-left: 4px solid #c9a03d;
-      margin-bottom: 1rem;
+      margin-bottom: 0rem;
     }
-    .step-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
-    .step-amount { font-size: 1rem; margin: 0.5rem 0; }
-    .receipt-area { margin-top: 1rem; padding-top: 0.5rem; border-top: 1px dashed #e2e8f0; }
+    .step-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+    .step-amount { font-size: 0.9rem; margin: 0.5rem 0; }
+    .receipt-area { margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px dashed #e2e8f0; }
     .upload-btn {
       background: #0a2a3f;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 1rem;
       border-radius: 20px;
       font-size: 0.8rem;
       cursor: pointer;
     }
-    .contact-admin {
+    .contact-admin-small {
       background: #eef2ff;
       border-radius: 0.75rem;
-      padding: 1rem;
-      margin-top: 1rem;
+      padding: 0.8rem;
+      margin-top: 0.8rem;
       text-align: center;
     }
-    .contact-admin h4 { font-size: 0.9rem; margin-bottom: 0.5rem; color: #0a2a3f; }
-    .contact-links {
+    .contact-admin-small a { font-size: 0.75rem; margin: 0 0.3rem; display: inline-block; margin-top: 0.3rem; }
+    .completed-message {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      text-align: center;
+    }
+    .progress-indicator {
+      background: #f1f5f9;
+      border-radius: 0.75rem;
+      padding: 0.6rem;
+      margin-top: 0.8rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #64748b;
+    }
+    
+    /* Chatbot */
+    .chatbot-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #c9a03d;
+      color: #0a2a3f;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
       display: flex;
-      gap: 0.8rem;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 99;
     }
-    .contact-links a {
-      padding: 0.4rem 0.8rem;
-      border-radius: 30px;
-      text-decoration: none;
+    .chatbot-btn:hover { transform: scale(1.1); background: #ad8232; }
+    .chat-window {
+      display: none;
+      position: fixed;
+      bottom: 5rem;
+      right: 2rem;
+      width: 350px;
+      height: 500px;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      z-index: 100;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #0a2a3f;
+      color: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 0.8rem;
+      overflow-y: auto;
+      background: #f8fafc;
+    }
+    .chat-input-area {
+      display: flex;
+      padding: 0.6rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .chat-input-area input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 60px;
+    }
+    .chat-input-area button {
+      background: #c9a03d;
+      border: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 60px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+    .message {
+      margin-bottom: 0.6rem;
+      display: flex;
+    }
+    .message.user { justify-content: flex-end; }
+    .message.bot .bubble { background: white; border: 1px solid #e2e8f0; }
+    .message.user .bubble { background: #c9a03d; color: #0a2a3f; }
+    .bubble {
+      max-width: 80%;
+      padding: 0.5rem 0.8rem;
+      border-radius: 1rem;
       font-size: 0.75rem;
-      font-weight: 500;
     }
-    .contact-email { background: #0a2a3f; color: white; }
-    .contact-facebook { background: #1877f2; color: white; }
-    .contact-phone { background: #c9a03d; color: #0a2a3f; }
     .site-footer {
       background: #0a2a3f;
-      padding: 1.5rem;
+      padding: 1rem;
       text-align: center;
       color: #94a3b8;
-      margin-top: 2rem;
+      margin-top: 1rem;
+      font-size: 0.7rem;
     }
     .logout-btn {
       background: #1e3a5f;
       color: white;
       border: none;
-      padding: 0.5rem 1.5rem;
+      padding: 0.4rem 1rem;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 0.8rem;
     }
-    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
+    .force-refresh-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      margin-left: 0.5rem;
+    }
+    @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } .chat-window { width: 90%; right: 5%; left: 5%; bottom: 5rem; } }
   </style>
 </head>
 <body>
@@ -211,6 +307,7 @@
     <div class="logo">Kinsman <span>Realty</span> Group</div>
     <div class="badge"><i class="fas fa-lock"></i> Encrypted Portal</div>
     <button id="resetBtn" class="reset-btn"><i class="fas fa-refresh"></i> Reset Application</button>
+    <button id="forceRefreshBtn" class="force-refresh-btn"><i class="fas fa-sync-alt"></i> Force Refresh (Clear Cache)</button>
   </div>
 </header>
 
@@ -218,7 +315,7 @@
   <div id="loginSection" class="login-panel">
     <i class="fas fa-home" style="font-size: 2.5rem; color: #c9a03d;"></i>
     <h2>Tenant Portal</h2>
-    <p style="color:#64748b; margin-bottom:1rem;">Enter your secure 6‑digit code</p>
+    <p style="color:#64748b; margin-bottom:1rem;">Enter your secure 6-digit code</p>
     <input type="password" id="accessCode" placeholder="••••••" maxlength="6" autocomplete="off">
     <button id="loginBtn">Access Dashboard</button>
   </div>
@@ -234,10 +331,12 @@
         <div id="propertyManager" class="detail-row"><span>Property Manager:</span><strong></strong></div>
         <hr style="margin: 1rem 0;">
         <h3><i class="fas fa-user-circle"></i> Your Profile</h3>
+        <p style="font-size:0.65rem; color:#ef4444; margin-bottom:0.3rem;">All fields are required</p>
         <img id="tenantPhotoPreview" class="photo-preview" src="https://via.placeholder.com/80?text=Photo">
         <input type="file" id="tenantPhotoUpload" accept="image/*" class="tenant-field">
-        <input type="text" id="tenantName" class="tenant-field" placeholder="Full Legal Name">
-        <input type="tel" id="tenantPhone" class="tenant-field" placeholder="Phone Number">
+        <input type="text" id="tenantName" class="tenant-field" placeholder="Full Legal Name *">
+        <input type="tel" id="tenantPhone" class="tenant-field" placeholder="Phone Number *">
+        <input type="email" id="tenantEmail" class="tenant-field" placeholder="Email Address *">
         <button id="saveInfoBtn" class="action-btn">Save Profile</button>
         <div class="tour-section">
           <h3><i class="fas fa-calendar-check"></i> Schedule a Tour</h3>
@@ -250,11 +349,12 @@
         </div>
       </div>
       <div class="info-card">
-        <h3><i class="fas fa-chart-line"></i> Current Payment Step</h3>
+        <h3><i class="fas fa-chart-line"></i> Your Payment Journey</h3>
+        <p style="font-size:0.7rem; margin-bottom:0.5rem;">Complete each step to continue your journey.</p>
         <div id="stepsContainer"></div>
       </div>
     </div>
-    <div style="padding: 1rem 2rem 1.5rem; text-align: right;">
+    <div style="padding: 0.8rem 2rem 1.2rem; text-align: right;">
       <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Exit Portal</button>
     </div>
   </div>
@@ -264,24 +364,26 @@
   <p>© 2026 Kinsman Realty Group — Secure Tenant Portal. All rights reserved.</p>
 </footer>
 
-<!-- Contact Admin Modal -->
-<div id="contactModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-  <div style="background: white; max-width: 350px; width: 90%; border-radius: 1.5rem; padding: 1.5rem; text-align: center; position: relative;">
-    <span id="closeModal" style="position: absolute; top: 0.8rem; right: 1rem; font-size: 1.3rem; cursor: pointer;">&times;</span>
-    <i class="fas fa-user-tie" style="font-size: 2rem; color: #c9a03d; margin-bottom: 0.5rem;"></i>
-    <h3 style="margin-bottom: 0.3rem;">Contact Property Admin</h3>
-    <p style="color: #64748b; font-size: 0.75rem; margin-bottom: 1rem;">Send your payment receipt and confirm payment</p>
-    <div style="display: flex; flex-direction: column; gap: 0.7rem;">
-      <a href="mailto:thekinsmanrealtygroup@proton.me" class="contact-email" style="display: flex; align-items: center; gap: 0.8rem; padding: 10px; background: #0a2a3f; color: white; border-radius: 50px; text-decoration: none; justify-content: center;"><i class="fas fa-envelope"></i> Send Email</a>
-      <a href="https://www.facebook.com/share/1AyDcJqBo1/" class="contact-facebook" style="display: flex; align-items: center; gap: 0.8rem; padding: 10px; background: #1877f2; color: white; border-radius: 50px; text-decoration: none; justify-content: center;" target="_blank"><i class="fab fa-facebook-messenger"></i> Facebook Message</a>
-      <a href="tel:+13852813672" class="contact-phone" style="display: flex; align-items: center; gap: 0.8rem; padding: 10px; background: #c9a03d; color: #0a2a3f; border-radius: 50px; text-decoration: none; justify-content: center;"><i class="fas fa-phone-alt"></i> Call Admin</a>
-    </div>
-    <p style="font-size: 0.7rem; margin-top: 1rem; color: #64748b;">After payment, contact admin to confirm and mark step complete.</p>
+<!-- Chatbot -->
+<div class="chatbot-btn" id="chatbotBtn">
+  <i class="fas fa-comment-dots"></i>
+</div>
+<div id="chatWindow" class="chat-window">
+  <div class="chat-header">
+    <span><i class="fas fa-robot"></i> Kinsman Assistant</span>
+    <span id="closeChat" style="cursor:pointer;">&times;</span>
+  </div>
+  <div id="chatMessages" class="chat-messages">
+    <div class="message bot"><div class="bubble">Hi! I'm your Kinsman Assistant. Welcome to your TKRG Tenant Dashboard. All tenants must complete all processes. You can ask me anything about all processes, timeline.</div></div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+    <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
   </div>
 </div>
 
 <script>
-  // ======================= 🔴 PROPERTY DATABASE =======================
+  // ======================= PROPERTY DATABASE =======================
   const propertiesDB = {
     "371504": {
       address: "65 kratoz St #304, pharr, TX 78577",
@@ -290,23 +392,39 @@
       baths: 2,
       sqft: 1180,
       securityDeposit: 500,
+      utilityDeposit: 500,
       heroImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80",
       manager: "James Rodriguez"
     }
   };
 
-  // ======================= 🔴 FINANCIAL STEPS - EDIT AMOUNTS HERE =======================
+  // ======================= 20 PAYMENT STEPS =======================
+  // 🔴🔴🔴 ONLY YOU (LANDLORD) SHOULD EDIT THIS ARRAY 🔴🔴🔴
+  // To mark a step as COMPLETED: change "status" from "pending" to "completed"
+  // To make a step active for payment: change "status" from "locked" to "pending"
+  // After editing, click "Force Refresh" button to clear cache and see changes
+  
   const financialStepsMaster = [
-    { name: "Security Deposit", amount: 500, status: "active", receiptRequired: true },
-    { name: "First Month Rent", amount: 1500, status: "hidden", receiptRequired: true },
-    { name: "Utility Deposit", amount: 500, status: "hidden", receiptRequired: true },
-    { name: "Lease-to-Own Fee", amount: 1500, status: "hidden", receiptRequired: true },
-    { name: "Month 2 Rent", amount: 3500, status: "hidden", receiptRequired: true },
-    { name: "Month 3 Rent", amount: 3500, status: "hidden", receiptRequired: true },
-    { name: "Month 4 Rent", amount: 3500, status: "hidden", receiptRequired: true },
-    { name: "Month 5 Rent", amount: 3500, status: "hidden", receiptRequired: true },
-    { name: "Month 6 Rent", amount: 3500, status: "hidden", receiptRequired: true },
-    { name: "Annual Maintenance", amount: 600, status: "hidden", receiptRequired: true }
+    { name: "Security Deposit", amount: 500, status: "pending", receiptData: null },
+    { name: "Utility Deposit", amount: 500, status: "completed", receiptData: null },
+    { name: "First Month Rent", amount: 1500, status: "locked", receiptData: null },
+    { name: "Lease-to-Own Fee", amount: 1500, status: "locked", receiptData: null },
+    { name: "Month 2 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 3 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 4 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 5 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 6 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 7 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 8 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 9 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 10 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 11 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Month 12 Rent", amount: 3500, status: "locked", receiptData: null },
+    { name: "Year 2 - Month 1", amount: 3600, status: "locked", receiptData: null },
+    { name: "Year 2 - Month 2", amount: 3600, status: "locked", receiptData: null },
+    { name: "Year 2 - Month 3", amount: 3600, status: "locked", receiptData: null },
+    { name: "Annual Maintenance", amount: 600, status: "locked", receiptData: null },
+    { name: "Property Tax Escrow", amount: 1200, status: "locked", receiptData: null }
   ];
 
   let currentCode = null;
@@ -318,147 +436,162 @@
   tomorrow.setDate(today.getDate() + 1);
   const minDate = tomorrow.toISOString().split('T')[0];
 
+  // FORCE REFRESH - Clears all localStorage and reloads from script
+  function forceRefresh() {
+    if (confirm("WARNING: This will clear ALL saved data and reload the portal with the current script settings. Your progress will be reset to match the script. Continue?")) {
+      // Clear all tenant data
+      localStorage.removeItem(`kinsman_tenant_${currentCode || "371504"}`);
+      // Reload the page
+      window.location.reload();
+    }
+  }
+
   function initializeTenantData(code) {
+    // Check if there's a version mismatch - force fresh start from script
     const saved = localStorage.getItem(`kinsman_tenant_${code}`);
-    if (saved) return JSON.parse(saved);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Compare step count - if different, start fresh
+      if (parsed.steps && parsed.steps.length === financialStepsMaster.length) {
+        return parsed;
+      }
+    }
     
-    const steps = financialStepsMaster.map((step) => ({
-      name: step.name,
-      amount: step.amount,
-      status: step.status,
-      receiptData: null
-    }));
+    // Create fresh steps from the script (what YOU edited)
+    const steps = JSON.parse(JSON.stringify(financialStepsMaster));
     return { 
       steps, 
       name: "", 
       phone: "", 
+      email: "",
       photoData: null, 
       tourDate: null,
       tourTime: null,
+      profileSaved: false,
       lastUpdate: new Date().toISOString() 
     };
-  }
-
-  function getCurrentStep() {
-    return tenantData.steps.find(step => step.status === "active");
   }
 
   function saveTenantData() {
     if (!currentCode) return;
     tenantData.lastUpdate = new Date().toISOString();
     localStorage.setItem(`kinsman_tenant_${currentCode}`, JSON.stringify(tenantData));
+    renderCurrentStep();
+  }
+
+  function checkProfileComplete() {
+    if (!tenantData.name || !tenantData.phone || !tenantData.email || !tenantData.photoData) {
+      return false;
+    }
+    return true;
   }
 
   function resetApplication() {
-    if (confirm("⚠️ Are you sure you want to reset your entire application? All progress will be lost.")) {
-      localStorage.removeItem(`kinsman_tenant_${currentCode}`);
-      tenantData = initializeTenantData(currentCode);
-      saveTenantData();
-      updateUI();
-      alert("✅ Application has been reset. Starting from Security Deposit.");
-    }
-  }
-
-  function showContactModal() {
-    document.getElementById('contactModal').style.display = 'flex';
-  }
-
-  function closeContactModal() {
-    document.getElementById('contactModal').style.display = 'none';
-  }
-
-  function markStepCompleted(stepName) {
-    const currentStepIndex = tenantData.steps.findIndex(s => s.name === stepName);
-    if (currentStepIndex === -1) return;
-    
-    tenantData.steps[currentStepIndex].status = "hidden";
-    
-    for (let i = currentStepIndex + 1; i < tenantData.steps.length; i++) {
-      if (tenantData.steps[i].status !== "hidden" && tenantData.steps[i].status !== "completed") {
-        tenantData.steps[i].status = "active";
-        break;
+    if (confirm("WARNING: This will erase ALL your payment progress, uploaded receipts, profile information, and tour schedules. You will start over from the beginning. Are you absolutely sure you want to reset your application?")) {
+      if (confirm("FINAL WARNING: This action cannot be undone. All your progress will be permanently lost. Click OK to reset or Cancel to keep your progress.")) {
+        localStorage.removeItem(`kinsman_tenant_${currentCode}`);
+        tenantData = initializeTenantData(currentCode);
+        saveTenantData();
+        updateUI();
+        alert("Your application has been reset. You are starting from the beginning.");
       }
     }
-    
-    saveTenantData();
-    renderSteps();
   }
 
-  function renderSteps() {
+  function getCurrentStep() {
+    for (let i = 0; i < tenantData.steps.length; i++) {
+      if (tenantData.steps[i].status === "pending") {
+        return { step: tenantData.steps[i], index: i };
+      }
+    }
+    return null;
+  }
+
+  function uploadReceipt() {
+    if (!checkProfileComplete()) {
+      alert("Please complete your profile (Name, Phone, Email, and Photo) before making payments.");
+      return;
+    }
+    
+    const current = getCurrentStep();
+    if (!current) {
+      alert("Congratulations! You have completed all payment steps!");
+      return;
+    }
+    
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.onchange = (e) => {
+      if (fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          tenantData.steps[current.index].receiptData = ev.target.result;
+          saveTenantData();
+          alert(`Receipt uploaded for "${current.step.name}". The landlord will verify your payment and mark it as completed. You will be notified when the next step unlocks.`);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      }
+    };
+    fileInput.click();
+  }
+
+  function renderCurrentStep() {
     const container = document.getElementById("stepsContainer");
     if (!container) return;
     
-    const currentStep = getCurrentStep();
+    const current = getCurrentStep();
     
-    if (!currentStep) {
-      container.innerHTML = '<div style="text-align:center; padding:2rem; color:#64748b;">✓ All payments completed! Thank you for being a great tenant.</div>';
+    if (!current) {
+      // All steps completed
+      container.innerHTML = `
+        <div class="completed-message">
+          <i class="fas fa-trophy" style="font-size: 2rem; color: #c9a03d;"></i>
+          <h3 style="margin: 0.5rem 0;">Congratulations!</h3>
+          <p>You have successfully completed all payment steps!</p>
+          <p style="margin-top: 0.5rem;">Welcome to your new home. You are now officially a Kinsman Realty owner!</p>
+        </div>
+      `;
       return;
     }
     
     container.innerHTML = `
       <div class="current-step-card">
-        <div class="step-name">📌 ${currentStep.name}</div>
-        <div class="step-amount">Amount to Pay: <strong>$${currentStep.amount.toLocaleString()}</strong></div>
+        <div class="step-name">Current Step: ${current.step.name}</div>
+        <div class="step-amount">Amount to Pay: <strong>$${current.step.amount.toLocaleString()}</strong></div>
         <div class="receipt-area">
-          ${currentStep.receiptData ? `
+          ${current.step.receiptData ? `
             <div style="background:#e2e8f0; padding:0.5rem; border-radius:0.5rem; font-size:0.8rem;">
-              <i class="fas fa-check-circle" style="color:#10b981;"></i> Receipt uploaded
-              <button class="view-receipt-btn" style="margin-left:0.5rem; background:#0a2a3f; color:white; border:none; padding:0.3rem 0.8rem; border-radius:15px; cursor:pointer;">View Receipt</button>
-              <button class="complete-step-btn" style="margin-left:0.5rem; background:#c9a03d; color:#0a2a3f; border:none; padding:0.3rem 0.8rem; border-radius:15px; cursor:pointer;">✓ Mark as Completed</button>
+              <i class="fas fa-check-circle" style="color:#10b981;"></i> Receipt uploaded - Awaiting landlord verification
+              <button id="viewReceiptBtn" style="margin-left:0.5rem; background:#0a2a3f; color:white; border:none; padding:0.3rem 0.8rem; border-radius:15px; cursor:pointer;">View Receipt</button>
             </div>
           ` : `
-            <p style="font-size:0.8rem; margin-bottom:0.5rem;">📎 Step 1: Upload your payment receipt below</p>
-            <input type="file" id="receiptUpload" accept="image/*" style="margin:0.5rem 0; display:block;">
-            <button id="uploadReceiptBtn" class="upload-btn">Upload Receipt</button>
+            <p style="font-size:0.8rem; margin-bottom:0.5rem;">Make your payment and upload the receipt below:</p>
+            <button id="uploadReceiptBtn" class="upload-btn"><i class="fas fa-upload"></i> Upload Receipt</button>
           `}
         </div>
-        <div class="contact-admin">
-          <h4><i class="fas fa-headset"></i> Need to send your receipt or confirm payment?</h4>
-          <p style="font-size:0.7rem; margin-bottom:0.5rem;">Contact Property Admin directly</p>
-          <div class="contact-links">
-            <a href="mailto:thekinsmanrealtygroup@proton.me" class="contact-email"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://www.facebook.com/share/1AyDcJqBo1/" class="contact-facebook" target="_blank"><i class="fab fa-facebook-messenger"></i> Facebook</a>
-            <a href="tel:+13852813672" class="contact-phone"><i class="fas fa-phone-alt"></i> Call</a>
-          </div>
+        <div class="contact-admin-small">
+          <p style="font-size:0.7rem; margin-bottom:0.3rem;">Need help? Contact your property manager:</p>
+          <a href="mailto:thekinsmanrealtygroup@proton.me" style="color:#0a2a3f;"><i class="fas fa-envelope"></i> Email</a> |
+          <a href="https://www.facebook.com/share/1AyDcJqBo1/" target="_blank" style="color:#1877f2;"><i class="fab fa-facebook-messenger"></i> Facebook</a> |
+          <a href="tel:+13852813672" style="color:#c9a03d;"><i class="fas fa-phone-alt"></i> Call</a>
         </div>
+      </div>
+      <div class="progress-indicator">
+        <i class="fas fa-chart-line"></i> You're making progress! Keep going.
       </div>
     `;
     
     const uploadBtn = document.getElementById("uploadReceiptBtn");
     if (uploadBtn) {
-      uploadBtn.addEventListener("click", () => {
-        const fileInput = document.getElementById("receiptUpload");
-        if (fileInput && fileInput.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(ev) {
-            currentStep.receiptData = ev.target.result;
-            saveTenantData();
-            renderSteps();
-            showContactModal();
-          };
-          reader.readAsDataURL(fileInput.files[0]);
-        } else {
-          alert("Please select a receipt image first.");
-        }
-      });
+      uploadBtn.addEventListener("click", uploadReceipt);
     }
     
-    const viewBtn = document.querySelector(".view-receipt-btn");
-    if (viewBtn) {
+    const viewBtn = document.getElementById("viewReceiptBtn");
+    if (viewBtn && current.step.receiptData) {
       viewBtn.addEventListener("click", () => {
-        if (currentStep.receiptData) {
-          const win = window.open();
-          win.document.write(`<img src="${currentStep.receiptData}" style="max-width:100%;">`);
-        }
-      });
-    }
-    
-    const completeBtn = document.querySelector(".complete-step-btn");
-    if (completeBtn) {
-      completeBtn.addEventListener("click", () => {
-        if (confirm(`Mark "${currentStep.name}" as completed? Make sure payment has been confirmed by admin.`)) {
-          markStepCompleted(currentStep.name);
-        }
+        const win = window.open();
+        win.document.write(`<img src="${current.step.receiptData}" style="max-width:100%;">`);
       });
     }
   }
@@ -473,6 +606,10 @@
   }
 
   function scheduleTour() {
+    if (!checkProfileComplete()) {
+      alert("Please complete your profile before scheduling a tour.");
+      return;
+    }
     const tourDate = document.getElementById("tourDate").value;
     const tourTime = document.getElementById("tourTime").value;
     if (!tourDate || !tourTime) {
@@ -490,7 +627,7 @@
     tenantData.tourTime = tourTime;
     saveTenantData();
     updateTourDisplay();
-    alert(`✓ Tour requested for ${tourDate} at ${tourTime}. You will receive a confirmation shortly.`);
+    alert(`Tour requested for ${tourDate} at ${tourTime}. You will receive a confirmation shortly.`);
   }
 
   function updateUI() {
@@ -501,26 +638,51 @@
     document.getElementById("propertyManager").querySelector("strong").innerText = currentProperty.manager;
     document.getElementById("tenantName").value = tenantData.name || "";
     document.getElementById("tenantPhone").value = tenantData.phone || "";
+    document.getElementById("tenantEmail").value = tenantData.email || "";
     if (tenantData.photoData) document.getElementById("tenantPhotoPreview").src = tenantData.photoData;
     
     document.getElementById("tourDate").setAttribute("min", minDate);
     if (tenantData.tourDate) document.getElementById("tourDate").value = tenantData.tourDate;
     if (tenantData.tourTime) document.getElementById("tourTime").value = tenantData.tourTime;
     
-    renderSteps();
+    renderCurrentStep();
     updateTourDisplay();
   }
 
   function saveProfile() {
-    tenantData.name = document.getElementById("tenantName").value;
-    tenantData.phone = document.getElementById("tenantPhone").value;
+    const name = document.getElementById("tenantName").value.trim();
+    const phone = document.getElementById("tenantPhone").value.trim();
+    const email = document.getElementById("tenantEmail").value.trim();
     const photoFile = document.getElementById("tenantPhotoUpload").files[0];
+    
+    if (!name) { alert("Please enter your full name."); return; }
+    if (!phone) { alert("Please enter your phone number."); return; }
+    if (!email) { alert("Please enter your email address."); return; }
+    if (!email.includes("@") || !email.includes(".")) { alert("Please enter a valid email address."); return; }
+    
+    tenantData.name = name;
+    tenantData.phone = phone;
+    tenantData.email = email;
+    
     if (photoFile) {
       const reader = new FileReader();
-      reader.onload = function(e) { tenantData.photoData = e.target.result; saveTenantData(); alert("Profile saved."); };
+      reader.onload = function(e) { 
+        tenantData.photoData = e.target.result;
+        tenantData.profileSaved = true;
+        saveTenantData();
+        updateUI();
+        alert("Profile saved successfully!");
+      };
       reader.readAsDataURL(photoFile);
-    } else { saveTenantData(); alert("Profile saved."); }
-    updateUI();
+    } else if (tenantData.photoData) {
+      tenantData.profileSaved = true;
+      saveTenantData();
+      updateUI();
+      alert("Profile saved successfully!");
+    } else {
+      alert("Please upload a photo to complete your profile.");
+      return;
+    }
   }
 
   function login(code) {
@@ -542,17 +704,75 @@
     document.getElementById("accessCode").value = "";
   }
 
+  // Chatbot
+  const chatBtn = document.getElementById('chatbotBtn');
+  const chatWindow = document.getElementById('chatWindow');
+  const closeChat = document.getElementById('closeChat');
+  
+  chatBtn.addEventListener('click', () => { chatWindow.style.display = 'flex'; });
+  closeChat.addEventListener('click', () => { chatWindow.style.display = 'none'; });
+  
+  function getChatResponse(message) {
+    const msg = message.toLowerCase().trim();
+    
+    if (msg.match(/progress|how many|completed|steps left|where am i/)) {
+      return "You are making good progress! Keep completing each step as they become available. Your landlord will notify you when each step is verified.";
+    }
+    if (msg.match(/security deposit|first step/)) {
+      return "The Security Deposit is the first step. Once you pay and upload the receipt, the landlord will verify it.";
+    }
+    if (msg.match(/utility|deposit/)) {
+      return "Utility Deposit comes after Security Deposit. It ensures your utilities are set up properly.";
+    }
+    if (msg.match(/lease to own|lto|owning|owner/)) {
+      return "The Lease-to-Own fee is what makes you the eventual owner of the property. It is an investment in your future.";
+    }
+    if (msg.match(/how long|timeline|when finish/)) {
+      return "The timeline depends on your payment schedule. Stay consistent and you will reach your goal!";
+    }
+    if (msg.match(/contact|admin|landlord|help|support/)) {
+      return "You can reach your property manager at:\nEmail: thekinsmanrealtygroup@proton.me\nPhone: +1 (385)-281-3672\nFacebook: Kinsman Realty Group";
+    }
+    
+    return "I am here to help! You can ask me about the application process, payment steps, contacting your landlord, or anything else about your rental journey.";
+  }
+  
+  function addChatMessage(text, sender) {
+    const chatDiv = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}`;
+    messageDiv.innerHTML = `<div class="bubble">${text.replace(/\n/g, '<br>')}</div>`;
+    chatDiv.appendChild(messageDiv);
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+  }
+  
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const userMessage = input.value.trim();
+    if  return;
+    addChatMessage(userMessage, 'user');
+    input.value = '';
+    setTimeout(() => {
+      const response = getChatResponse(userMessage);
+      addChatMessage(response, 'bot');
+    }, 400);
+  }
+  
+  window.sendChatMessage = sendChatMessage;
+  window.addEventListener('click', (e) => {
+    if (!chatWindow.contains(e.target) && e.target !== chatBtn && !chatBtn.contains(e.target)) {
+      chatWindow.style.display = 'none';
+    }
+  });
+
+  // Event Listeners
   document.getElementById("loginBtn").addEventListener("click", () => login(document.getElementById("accessCode").value.trim()));
   document.getElementById("logoutBtn").addEventListener("click", logout);
   document.getElementById("saveInfoBtn").addEventListener("click", saveProfile);
   document.getElementById("scheduleTourBtn").addEventListener("click", scheduleTour);
   document.getElementById("resetBtn").addEventListener("click", resetApplication);
-  document.getElementById("closeModal").addEventListener("click", closeContactModal);
-  window.addEventListener("click", (e) => {
-    const modal = document.getElementById("contactModal");
-    if (e.target === modal) closeContactModal();
-  });
+  document.getElementById("forceRefreshBtn").addEventListener("click", forceRefresh);
   document.getElementById("accessCode").addEventListener("keypress", (e) => { if (e.key === "Enter") login(document.getElementById("accessCode").value.trim()); });
 </script>
 </body>
-</html>
+  </html>
